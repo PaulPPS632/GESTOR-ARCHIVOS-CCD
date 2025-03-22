@@ -1,11 +1,12 @@
-import { FileModel } from "./FileModel";
-import { Folder } from "./Folder";
+
+import { Historial } from "./historial";
 import { Roles } from "./Roles";
+import { SharedFolders } from "./SharedFolders";
 import { User } from "./User";
 
 export const models = [
     Roles,
     User,
-    Folder,
-    FileModel
+    SharedFolders,
+    Historial
 ]

@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import GestorRouter from "./routes/GestorRouter.routes";
+import AuthRoter from "./routes/AuthRouter.routes";
 //import { Authorization } from "./middlewares/Authorization";
 class App {
     private server: Application;
@@ -19,6 +20,7 @@ class App {
     private routes(): void {
       //this.server.use("/api", UserRoutes);
       this.server.use("/api/gestor", GestorRouter);
+      this.server.use("/api/auth", AuthRoter);
     }
     public getServer(): Application {
       return this.server;

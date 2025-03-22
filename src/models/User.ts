@@ -1,15 +1,12 @@
-import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo, Column, DataType, ForeignKey, IsEmail, IsUUID, Model, PrimaryKey, Table, Unique } from "sequelize-typescript";
+import { AllowNull, BeforeCreate, BeforeUpdate, BelongsTo, Column, DataType, ForeignKey, HasMany, IsEmail, Model, Table, Unique } from "sequelize-typescript";
 import bcrypt from "bcryptjs";
 import { Roles } from "./Roles";
+import { SharedFolders } from "./SharedFolders";
 @Table({
     tableName:'user'
 })
 export class User extends Model{
-    @IsUUID(4)
-    @PrimaryKey
-    @Column
-    id!: string;
-
+    @AllowNull(true)
     @Column(DataType.STRING)
     name!: string;
 
@@ -23,13 +20,16 @@ export class User extends Model{
     @Column(DataType.STRING)
     password!: string;
 
-
+    @AllowNull(false)
     @ForeignKey(() => Roles)
     @Column(DataType.INTEGER)
     rolId!: number;
 
     @BelongsTo(() => Roles)
     rol!: Roles;
+
+    @HasMany(() => SharedFolders)
+    sharedFolders!: SharedFolders[]
 
     @BeforeUpdate
     @BeforeCreate
