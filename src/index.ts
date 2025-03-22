@@ -11,10 +11,10 @@ async function main(): Promise<void> {
 
     // Inicialización del servidor
     const httpServer = createServer(app);
-
+    const port = Number(process.env.PORT || 8001);
     //escucha del servidor en puerto 8000
-    httpServer.listen(3000, '0.0.0.0', () => {
-      console.log(`Server is running on http://localhost:3000`);
+    httpServer.listen(port, '0.0.0.0', () => {
+      console.log(`Server is running on http://localhost:${port}`);
     });
     
   } catch (error) {
